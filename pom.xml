@@ -53,38 +53,6 @@
 		           </resource>
 		        </resources>
 		      </configuration>
-		      <executions>
-		        <execution>
-		            <phase>package</phase>
-		            <goals>
-		                <goal>build</goal>
-		            </goals>
-		        </execution>
-		        <execution>
-		            <id>tag-image</id>
-		            <phase>package</phase>
-		            <goals>
-		                <goal>tag</goal>
-		            </goals>
-		            <configuration>
-		                <forceTags>false</forceTags>
-		                <image>${project.name}:${project.version}</image>
-		                <newName>${docker.registry.host}/${project.name}:${project.version}</newName>
-		            </configuration>
-		        </execution>
-		        <execution>
-		            <id>push-image</id>
-		            <phase>deploy</phase>
-		            <goals>
-		                <goal>push</goal>
-		            </goals>
-		            <configuration>
-		                <useConfigFile>true</useConfigFile>
-		                <forceTags>false</forceTags>
-		                <imageName>${docker.registry.host}/${project.name}:${project.version}</imageName>
-		            </configuration>
-		        </execution>
-			  </executions>
 	    	</plugin>
 	  </plugins>
 	</build>
