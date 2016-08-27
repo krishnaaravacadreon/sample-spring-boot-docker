@@ -5,6 +5,8 @@
 	<version>0.0.1-SNAPSHOT</version>
   
   	<properties>
+  		<docker.image.name>dev-cadreon</docker.image.name>
+    	<docker.image.version>latest</docker.image.version>
 	    <docker.registry.host>https://841532708206.dkr.ecr.us-east-1.amazonaws.com</docker.registry.host>
 	</properties>
 
@@ -43,7 +45,7 @@
 		      <version>0.4.11</version>
 		      <configuration>
 		        <dockerHost>http://localhost:2375</dockerHost>
-		        <imageName>${project.name}:${project.version}</imageName>
+		        <imageName>${docker.image.name}:${docker.image.version}</imageName>
 		        <baseImage>java</baseImage>
 		        <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
 		        <resources>
@@ -68,9 +70,9 @@
 		                <goal>tag</goal>
 		            </goals>
 		            <configuration>
-		                <forceTags>false</forceTags>
-		                <image>${project.name}:${project.version}</image>
-		                <newName>${docker.registry.host}/${project.name}:${project.version}</newName>
+		                <forceTags>true</forceTags>
+		                <image>${docker.image.name}:${docker.image.version}</image>
+                		<newName>${docker.registry.host}/${docker.image.name}:${docker.image.version}</newName>
 		            </configuration>
 		        </execution>
 		        <execution>
@@ -81,8 +83,8 @@
 		            </goals>
 		            <configuration>
 		                <useConfigFile>true</useConfigFile>
-		                <forceTags>false</forceTags>
-		                <imageName>${docker.registry.host}/${project.name}:${project.version}</imageName>
+		                <forceTags>true</forceTags>
+		                <imageName>${docker.registry.host}/${docker.image.name}:${docker.image.version}</imageName>
 		            </configuration>
 		        </execution>
 			  </executions>
