@@ -5,7 +5,7 @@
 	<version>0.0.1-SNAPSHOT</version>
   
   	<properties>
-	    <docker.registry.host>https://841532708206.dkr.ecr.us-east-1.amazonaws.com/dev-cadreon</docker.registry.host>
+	    <docker.registry.host>https://841532708206.dkr.ecr.us-east-1.amazonaws.com</docker.registry.host>
 	</properties>
 
 	<parent>
