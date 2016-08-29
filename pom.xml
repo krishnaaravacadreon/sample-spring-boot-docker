@@ -44,7 +44,7 @@
 		      <artifactId>docker-maven-plugin</artifactId>
 		      <version>0.4.11</version>
 		      <configuration>
-		        <dockerHost>http://localhost:2375</dockerHost>
+		        <dockerHost>http://127.0.0.1:2375</dockerHost>
 		        <imageName>${docker.image.name}:${docker.image.version}</imageName>
 		        <baseImage>java</baseImage>
 		        <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
