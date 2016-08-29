@@ -42,7 +42,7 @@
 		      <artifactId>docker-maven-plugin</artifactId>
 		      <version>0.4.11</version>
 		      <configuration>
-		        <imageName>${project.name}:${project.version}</imageName>
+		        <imageName>dev-cadreon:latest</imageName>
 		        <baseImage>java</baseImage>
 		        <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
 		        <resources>
