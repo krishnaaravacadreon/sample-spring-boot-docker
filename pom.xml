@@ -5,9 +5,7 @@
 	<version>0.0.1-SNAPSHOT</version>
   
   	<properties>
-  		<docker.image.name>dev-cadreon</docker.image.name>
-    	<docker.image.version>latest</docker.image.version>
-	    <docker.registry.host>https://841532708206.dkr.ecr.us-east-1.amazonaws.com</docker.registry.host>
+	    <docker.registry.host>https://myaccount.dkr.ecr.us-east-1.amazonaws.com</docker.registry.host>
 	</properties>
 
 	<parent>
@@ -44,7 +42,7 @@
 		      <artifactId>docker-maven-plugin</artifactId>
 		      <version>0.4.11</version>
 		      <configuration>
-		        <imageName>${docker.image.name}:${docker.image.version}</imageName>
+		        <imageName>${project.name}:${project.version}</imageName>
 		        <baseImage>java</baseImage>
 		        <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
 		        <resources>
@@ -55,38 +53,6 @@
 		           </resource>
 		        </resources>
 		      </configuration>
-		      <executions>
-		        <execution>
-		            <phase>package</phase>
-		            <goals>
-		                <goal>build</goal>
-		            </goals>
-		        </execution>
-		        <execution>
-		            <id>tag-image</id>
-		            <phase>package</phase>
-		            <goals>
-		                <goal>tag</goal>
-		            </goals>
-		            <configuration>
-		                <forceTags>true</forceTags>
-		                <image>${docker.image.name}:${docker.image.version}</image>
-                		<newName>${docker.registry.host}/${docker.image.name}:${docker.image.version}</newName>
-		            </configuration>
-		        </execution>
-		        <execution>
-		            <id>push-image</id>
-		            <phase>deploy</phase>
-		            <goals>
-		                <goal>push</goal>
-		            </goals>
-		            <configuration>
-		                <useConfigFile>true</useConfigFile>
-		                <forceTags>true</forceTags>
-		                <imageName>${docker.registry.host}/${docker.image.name}:${docker.image.version}</imageName>
-		            </configuration>
-		        </execution>
-			  </executions>
 	    	</plugin>
 	  </plugins>
 	</build>
